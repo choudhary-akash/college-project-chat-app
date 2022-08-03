@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +19,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return inertia('Home', [
-        'name' => 'Akash Choudhary'
-    ]);
+Route::get('/login', function () {
+	return inertia('Auth/Login');
+})->name('login');
+
+Route::get('/register', function () {
+	return inertia('Auth/Register');
+});
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::middleware('auth')->group(function() {
+	Route::get('/', function () {
+		return inertia('App', [
+			'user' => auth()->user()
+		]);
+	});
 });

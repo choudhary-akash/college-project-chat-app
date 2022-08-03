@@ -1,12 +1,19 @@
-require('./bootstrap');
+import { createApp, h,  } from 'vue'
+import { createInertiaApp } from '@inertiajs/inertia-vue3'
+import mitt from 'mitt';
+import './bootstrap';
 
-import React from 'react'
-import { render } from 'react-dom'
-import { createInertiaApp } from '@inertiajs/inertia-react'
+const emitter = mitt();
+
+window.ChatStore.emitter = emitter;
 
 createInertiaApp({
-    resolve: name => require(`./Pages/${name}`),
-    setup({ el, App, props }) {
-        render(<App {...props} />, el)
-    },
+  resolve: name => require(`./Pages/${name}`),
+  setup({ el, App, props, plugin }) {
+    createApp({ render: () => h(App, props) })
+      .use(plugin)
+	  .provide('emitter', emitter)
+	  .provide('Echo', window.Echo)
+      .mount(el)
+  },
 })

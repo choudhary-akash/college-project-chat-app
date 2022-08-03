@@ -15,18 +15,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('email')->unique();
-            $table->string('password')->nullable();
+            $table->string('first_name');
+			$table->string('last_name');
+            $table->string('mobile');
+            $table->string('password');
             $table->string('about')->nullable();
-            $table->boolean('is_public')->default(true);
-            $table->boolean('show_read_receipts')->default(true);
-            $table->string('profile_image')->nullable();
+            $table->string('image')->nullable();
             $table->rememberToken();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('last_seen_at')->nullable();
             $table->timestamps();
         });
     }

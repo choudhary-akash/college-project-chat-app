@@ -1,1 +1,53 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap);
+:root {
+    --bg-color-1: #313442;
+    --bg-color-2: #383d4b;
+    --bg-color-3: #474D60;
+    --bg-color-4: #1F2129;
+    /* --primary-color: rgb(201, 157, 255); */
+    --primary-color: #78ceff;
 
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.link-primary {
+    color: var(--primary-color);
+}
+
+.link-primary:hover {
+    color: var(--primary-color);
+}
+
+.text-danger {
+    color: #ff7c7c !important
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+#app {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bg-color-1);
+    color: white;
+    display: flex;
+    flex-direction: row;
+}

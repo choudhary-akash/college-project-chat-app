@@ -18,20 +18,6 @@ export const ChatStore = reactive({
 			console.error(err);
 		}
 	},
-	// async fetchChatById(chatId) {
-	// 	try {
-	// 		let res = await axios.get('/api/chats/'+chatId);
-
-	// 		if (!this.findChat(chatId)) {
-	// 			this.chats.push(chat);
-	// 			return this.chats[this.chats.length - 1];
-	// 		}
-
-	// 		this.findChat(chatId);
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 	}
-	// },
 	async fetchMessages(chatId) {
 		let chat = this.findChat(chatId);
 		
